@@ -3,6 +3,7 @@
 #define WINDOW_X 800
 #define WINDOW_Y 600
 #define WINDOW_TITLE "bouncy"
+#define gravity 10
 
 class BouncySquare
 {
@@ -16,8 +17,12 @@ class BouncySquare
     BouncySquare(float pos_x, float pos_y, float size_x, float size_y, Color colour, Vector2 velocity) : pos_x(pos_x), pos_y(pos_y), size_x(size_x), size_y(size_y), colour(colour), velocity(velocity) {}
 
     int update(float dt) {
+        // apply linear velocities
         pos_x += velocity.x * dt;
         pos_y += velocity.y * dt;
+        // apply gravity
+        velocity.y += gravity;
+        // collide with walls
         if(pos_x < 0 || pos_x + size_x > WINDOW_X)
         {
             velocity.x = -velocity.x;
@@ -26,12 +31,13 @@ class BouncySquare
         {
             velocity.y = -velocity.y;
         }
+        // draw the rect
         DrawRectangle(pos_x, pos_y, size_x, size_y, colour);
         return 0;
     }
 };
 
-const int num_squares = 25;
+const int num_squares = 100;
 BouncySquare* squares[num_squares];
 
 int main()
