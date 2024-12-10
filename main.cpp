@@ -78,7 +78,8 @@ int main()
         float dt = GetFrameTime();
         BeginDrawing();
         ClearBackground(BLACK);
-
+        
+        // for each square in the squares array run the update method
         for (BouncySquare* square : squares)
         {
             square->update(dt);
