@@ -6,6 +6,7 @@
 #define gravity 9.81
 
 #define NUM_SQUARES 250
+#define VEL_CONSERVED_ON_COLLISION 0.6
 
 struct Vector2i
 {
@@ -36,12 +37,12 @@ class BouncySquare
         if(pos.x < 0 || pos.x + size.x > WINDOW_X)
         {
             pos = prev_pos;
-            velocity.x = -velocity.x * 0.8;
+            velocity.x = -velocity.x * VEL_CONSERVED_ON_COLLISION;
         }
         if(pos.y < 0 || pos.y + size.y > WINDOW_Y)
         {
             pos = prev_pos;
-            velocity.y = -velocity.y * 0.8;
+            velocity.y = -velocity.y * VEL_CONSERVED_ON_COLLISION;
         }
         
         // set prev pos for collisions
