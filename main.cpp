@@ -67,12 +67,12 @@ int main()
 
     while(!WindowShouldClose())
     {
+        float dt = GetFrameTime();
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
         for (BouncySquare* square : squares)
         {
-            float dt = GetFrameTime();
             square->update(dt);
         }
 
