@@ -1,7 +1,7 @@
 #include "raylib.h"
 
-#define WINDOW_X 800
-#define WINDOW_Y 600
+#define WINDOW_X 1600
+#define WINDOW_Y 900
 #define WINDOW_TITLE "bouncy"
 #define gravity 9.81
 
