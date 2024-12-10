@@ -1,5 +1,6 @@
 #include "raylib.h"
 
+// probably should have used defines
 struct WindowSettings
 {
     int w = 800;
