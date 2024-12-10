@@ -5,6 +5,8 @@
 #define WINDOW_TITLE "bouncy"
 #define gravity 9.81
 
+#define NUM_SQUARES 250
+
 struct Vector2i
 {
     int x;
@@ -54,15 +56,14 @@ class BouncySquare
     }
 };
 
-const int num_squares = 100;
-BouncySquare* squares[num_squares];
+BouncySquare* squares[NUM_SQUARES];
 
 int main()
 {
     InitWindow(WINDOW_X, WINDOW_Y, WINDOW_TITLE);
     SetTargetFPS(60);
 
-    for(int i = 0; i < num_squares; i++) 
+    for(int i = 0; i < NUM_SQUARES; i++) 
     {
         Vector2i size = {GetRandomValue(25,75), GetRandomValue(25,75)};
         Vector2 pos = {(float)GetRandomValue(0, WINDOW_X - size.x), (float)GetRandomValue(0, WINDOW_Y - size.y)};
