@@ -24,12 +24,12 @@ class BouncySquare
 
     BouncySquare(Vector2 pos, Vector2i size, Color colour, Vector2 velocity) : pos(pos), size(size), colour(colour), velocity(velocity) {}
 
-    int update(float dt) {
+    int update(float dt) 
+    {
         // apply linear velocities
         pos.x += velocity.x * dt;
         pos.y += velocity.y * dt;
-        // apply gravity
-        velocity.y += gravity;
+        
         // collide with walls
         if(pos.x < 0 || pos.x + size.x > WINDOW_X)
         {
@@ -41,7 +41,13 @@ class BouncySquare
             pos = prev_pos;
             velocity.y = -velocity.y * 0.8;
         }
+        
+        // set prev pos for collisions
         prev_pos = pos;
+        
+        // apply gravity
+        velocity.y += gravity;
+        
         // draw the rect
         DrawRectangle(pos.x, pos.y, size.x, size.y, colour);
         return 0;
@@ -69,7 +75,7 @@ int main()
     {
         float dt = GetFrameTime();
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+        ClearBackground(BLACK);
 
         for (BouncySquare* square : squares)
         {
