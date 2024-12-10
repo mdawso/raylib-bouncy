@@ -65,6 +65,7 @@ int main()
 
     for(int i = 0; i < NUM_SQUARES; i++) 
     {
+        // for each index in the squares array - init a new square object and give it random size, pos, colour and velocity
         Vector2i size = {GetRandomValue(25,75), GetRandomValue(25,75)};
         Vector2 pos = {(float)GetRandomValue(0, WINDOW_X - size.x), (float)GetRandomValue(0, WINDOW_Y - size.y)};
         Color colour = {(unsigned char)GetRandomValue(0,255), (unsigned char)GetRandomValue(0,255), (unsigned char)GetRandomValue(0,255), 0xff};
