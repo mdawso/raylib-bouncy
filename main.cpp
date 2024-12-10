@@ -1,14 +1,8 @@
 #include "raylib.h"
 
-// probably should have used defines
-struct WindowSettings
-{
-    int w = 800;
-    int h = 600;
-    const char* title = "bouncy";
-};
-
-WindowSettings settings;
+#define WINDOW_X 800
+#define WINDOW_Y 600
+#define WINDOW_TITLE "bouncy"
 
 class BouncySquare
 {
@@ -24,11 +18,11 @@ class BouncySquare
     int update(float dt) {
         pos_x += velocity.x * dt;
         pos_y += velocity.y * dt;
-        if(pos_x < 0 || pos_x + size_x > settings.w)
+        if(pos_x < 0 || pos_x + size_x > WINDOW_X)
         {
             velocity.x = -velocity.x;
         }
-        if(pos_y < 0 || pos_y + size_y > settings.h)
+        if(pos_y < 0 || pos_y + size_y > WINDOW_Y)
         {
             velocity.y = -velocity.y;
         }
@@ -42,14 +36,14 @@ BouncySquare* squares[num_squares];
 
 int main()
 {
-    InitWindow(settings.w, settings.h, settings.title);
+    InitWindow(WINDOW_X, WINDOW_Y, WINDOW_TITLE);
     SetTargetFPS(60);
 
     for(int i = 0; i < num_squares; i++) {
         float w = GetRandomValue(25,75);
         float h = GetRandomValue(25,75);
-        float x = GetRandomValue(w, settings.w - w); 
-        float y = GetRandomValue(h, settings.h - h);
+        float x = GetRandomValue(w, WINDOW_X - w); 
+        float y = GetRandomValue(h, WINDOW_Y - h);
         Color colour = {(unsigned char)GetRandomValue(0,255), (unsigned char)GetRandomValue(0,255), (unsigned char)GetRandomValue(0,255), 0xff};
         Vector2 velocity = {(float)GetRandomValue(-250,250), (float)GetRandomValue(-250,250)};
         squares[i] = new BouncySquare(x, y, w, h, colour, velocity);
